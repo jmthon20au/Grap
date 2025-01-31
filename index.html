@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب نقاط باب الغرب</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #bfffff;
+            margin: 10;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 90 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #ffb200;
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        #exchange-rate {
+            font-size: 15px;
+            color: #ff5f55;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            font-size: 20px;
+            border: 2px solid #aaf4ff;
+            border-radius: 80px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #ff000a;
+            outline: none;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .currency {
+            color: #888;
+            font-size: 18px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 15px;
+            color: #777;
+        }
+
+        footer a {
+            color: #1523ff;
+            text-decoration: none;
+        }
+
+        .icon-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ff9e55;
+            color: white;
+            padding: 5px;
+            border-radius: 80px;
+            text-decoration: none;
+            font-size: 18px;
+            margin-top: 10px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .icon-button:hover {
+            background-color: #15a1ff;
+        }
+
+        .material-icons {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>حساب ارباح نقاط باب الغرب</h1>
+    <!-- عرض سعر الصرف -->
+    <div id="exchange-rate">سعر الصرف الحالي: 1 دولار = <span id="rate-value">1310</span> د.ع</div>
+
+    <label for="points">: عدد نقاطك في التطبيق </label>
+    <input type="number" id="points" placeholder="أدخل هنا عدد النقاط في التطبيق" oninput="calculateEarnings()">
+    
+    <h2>الأرباح بالدولار: <span id="usd" class="result">0.00</span> <span class="currency">دولار</span></h2>
+    <h2>الأرباح بالدينار العراقي: <span id="iqd" class="result">0.00</span> <span class="currency">ع.د</span></h2>
+    
+    <!-- زر الدعم الفني -->
+    <a href="https://t.me/Babalgharb7" class="icon-button" target="_self">
+        دعم فني <span class="material-icons">help_outline</span>
+    </a>
+
+    <!-- زر رابط التطبيق -->
+    <a href="https://t.me/Bab_algharb7/1469" class="icon-button" target="_self">
+        رابط التطبيق <span class="material-icons">android</span>
+    </a>
+    
+    <footer>
+        <p>حقوق الطبع والنشر &copy; <a href="https://www.ali-altaee.free.nf">علي الطائي</a> 2025</p>
+    </footer>
+</div>
+
+<script>
+    
+    const exchangeRate = 1310;  // سعر صرف الدولار مقابل الدينار العراقي (يمكن تحديثه بشكل دوري)
+
+    // تحديث سعر الصرف المعروض
+    document.getElementById('rate-value').innerText = exchangeRate;
+
+function calculateEarnings() {
+    let points = document.getElementById('points').value;
+    let usdEarnings = points / 6600;  // حساب الأرباح بالدولار
+    let iqdEarnings = usdEarnings * exchangeRate;  // تحويل الأرباح إلى الدينار العراقي
+
+    // تنسيق الأرقام باستخدام toLocaleString()
+    document.getElementById('usd').innerText = usdEarnings.toFixed(2).toLocaleString('en-US');
+    document.getElementById('iqd').innerText = Math.floor(iqdEarnings).toLocaleString('en-US');
+}
+
+</script>
+
+</body>
+</html>
