@@ -135,6 +135,7 @@
 
 <div class="container">
     <h1>حساب ارباح نقاط باب الغرب</h1>
+<h1> كل 8ك تساوي 1دولار </h1>
     <!-- عرض سعر الصرف -->
     <div id="exchange-rate">سعر الصرف الحالي: 1 دولار = <span id="rate-value">1310</span> د.ع</div>
 
@@ -168,7 +169,7 @@
 
 function calculateEarnings() {
     let points = document.getElementById('points').value;
-    let usdEarnings = points / 6600;  // حساب الأرباح بالدولار
+    let usdEarnings = points / 8000;  // حساب الأرباح بالدولار
     let iqdEarnings = usdEarnings * exchangeRate;  // تحويل الأرباح إلى الدينار العراقي
 
     // تنسيق الأرقام باستخدام toLocaleString()
